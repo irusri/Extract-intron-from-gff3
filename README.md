@@ -11,7 +11,7 @@ Extract intron feature gff3:
 perl [make_intron_feature.pl](http://v22.popgenie.org/script/make_intron_feature.pl) -u [uname]-p [pass] -db [gbrowse_database] -o [output.gff3]
 </code>
 
-[Here](http://galaxy.popgenie.org:8080/u/chanaka/h/extract-intron) is the final result.
+[Here](http://galaxy.popgenie.org:8080/u/chanaka/h/extract-intron) are the final results.
 
 ######Option 2:
 This is an alternative solution without using GBrowse and MySQL.
@@ -26,4 +26,4 @@ awk '/intron/{print}' output.gff3 | sort -k 1,1 -k4,2n   > processed_intron.gff3
 </code>
 
 ######Option 3:
-If you don't like to type commands, you can use the [PlantGeIE Galaxy extract intron feature tool](http://galaxy.popgenie.org:8080/tool_runner?tool_id=extract_intron_gff3). Final result similar to [this](http://galaxy.popgenie.org:8080/u/chanaka/h/extract-intron-gff3)
+If you don't like to type commands, you can use the [PlantGeIE Galaxy extract intron feature tool](http://galaxy.popgenie.org:8080/tool_runner?tool_id=extract_intron_gff3). Final results similar to [this](http://galaxy.popgenie.org:8080/u/chanaka/h/extract-intron-gff3)
