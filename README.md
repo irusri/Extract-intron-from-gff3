@@ -7,7 +7,7 @@ Load the gff3 file into GBrowse
 <code>
 perl bp_bulk_load.pl -u [uname]-p [pass] -d  [gbrowse_database] [input.gff3/input.fasta]  
 </code>
-Extract the gff3:
+Extract the gff3:  
 <code>
 perl make_intron_feature.pl -u [uname]-p [pass] -db [gbrowse_database] -o [output.gff3]
 </code>
