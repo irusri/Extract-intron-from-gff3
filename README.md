@@ -26,4 +26,4 @@ awk '/intron/{print}' output.gff3 | sort -k 1,1 -k4,2n   > processed_intron.gff3
 </code>
 
 ######Option 3:
-You can use the [PlantGeIE Galaxy tools](http://galaxy.popgenie.org:8080/tool_runner?tool_id=extract_intron_gff3) if you don't like to type commands.
+You can use the [PlantGeIE Galaxy tools](http://galaxy.popgenie.org:8080/tool_runner?tool_id=extract_intron_gff3) if you don't like to type commands. Final result similar to [this](http://galaxy.popgenie.org:8080/u/chanaka/h/extract-intron-gff3)
