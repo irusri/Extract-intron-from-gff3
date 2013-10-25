@@ -8,7 +8,7 @@ perl [bp_bulk_load.pl](https://github.com/bioperl/bioperl-live/blob/master/scrip
 </code>
 Extract the gff3:  
 <code>
-perl [make_intron_feature.pl](http://popgenie.org/script/make_intron_feature.pl) -u [uname]-p [pass] -db [gbrowse_database] -o [output.gff3]
+perl [make_intron_feature.pl](http://v22.popgenie.org/script/make_intron_feature.pl) -u [uname]-p [pass] -db [gbrowse_database] -o [output.gff3]
 </code>
 
 [Here](http://galaxy.popgenie.org:8080/u/chanaka/h/extract-intron) is the final result.
