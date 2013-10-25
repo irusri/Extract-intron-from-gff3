@@ -11,7 +11,7 @@ def instert_introns_to_gff3(gff_filename, output_dir):
     output_basename = "processed"
     output_filename = \
         os.path.join(output_dir,
-                     "%s.with_introns.gff" %(output_basename))
+                     "%s._introns.gff3" %(output_basename))
     print "Adding introns to GFF..."
     print "  - Input: %s" %(gff_filename)
     print "  - Output: %s" %(output_filename)
