@@ -5,7 +5,7 @@ There several ways to extract intron gff3 file using gene gff3 file. We can use 
 Here are the steps:
 Load the gff3 file into GBrowse
 <code>
-perl bp_bulk_load.pl -u [uname]-p [pass] -d  [gbrowse_database] [input.gff3/input.fasta]
+perl bp_bulk_load.pl -u [uname]-p [pass] -d  [gbrowse_database] [input.gff3/input.fasta]  
 </code>
 Extract the gff3:
 <code>
