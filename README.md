@@ -8,7 +8,7 @@ perl bp_bulk_load.pl -u [uname]-p [pass] -d  [gbrowse_database] [input.gff3/inpu
 </code>
 Extract the gff3:  
 <code>
-perl make_intron_feature.pl[ftp://popgenie.org/popgenie/Populus_trichocarpa/v2.2_current/scripts/make_intron_feature.pl] -u [uname]-p [pass] -db [gbrowse_database] -o [output.gff3]
+perl make_intron_feature.pl[(ftp://popgenie.org/popgenie/Populus_trichocarpa/v2.2_current/scripts/make_intron_feature.pl)] -u [uname]-p [pass] -db [gbrowse_database] -o [output.gff3]
 </code>
 
 However we can extract intron feature gff3 file without using MySQL database:
