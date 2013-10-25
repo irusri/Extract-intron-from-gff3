@@ -4,11 +4,11 @@ import misopy
 import misopy.gff_utils as gff_utils
 import misopy.Gene as gene_utils
 
-def instert_introns_to_gff3(gff_filename, output_dir):
+def instert_introns_to_gff3(gff_filename, output_filename):
     """
     Add 'intron' entries to GFF.
     """
-    output_basename = "processed"
+    output_basename = output_filename
     output_filename = \
         os.path.join(output_dir,
                      "%s._introns.gff3" %(output_basename))
