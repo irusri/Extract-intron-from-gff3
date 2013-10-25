@@ -22,6 +22,8 @@ python [extract_intron_gff3_from_gff3.py](https://raw.github.com/irusri/Extract-
 
 Finally we need to filter and sort the output gff3 file  
 <code>
-awk '/intron/{print}' output.gff3 > filtered.gff3
+awk '/intron/{print}' output.gff3 | sort -k 1,1 -k4,2n   > processed_intron.gff3
 </code>
 
+######Option 3:
+You can use the Galaxy tools if you don't like to type commands.
