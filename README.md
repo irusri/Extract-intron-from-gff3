@@ -11,7 +11,7 @@ Extract the gff3:
 perl [make_intron_feature.pl](http://popgenie.org/script/make_intron_feature.pl) -u [uname]-p [pass] -db [gbrowse_database] -o [output.gff3]
 </code>
 
-[Here](http://galaxy.popgenie.org:8080/u/chanaka/h/extract-intron) is the final results.
+[Here](http://galaxy.popgenie.org:8080/u/chanaka/h/extract-intron) is the final result.
 
 ######Option 2:
 Here is the alternative solution without using GBrowse and MySQL.
