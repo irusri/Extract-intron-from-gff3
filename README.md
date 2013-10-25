@@ -17,7 +17,7 @@ Final results looks like [this](http://galaxy.popgenie.org:8080/u/chanaka/h/extr
 Here is the alternative solution without using GBrowse and MySQL.
 First we need to download and install the latest version of [misopy](https://pypi.python.org/pypi/misopy) and [gffutils](https://github.com/seandavi/GFFutils).  
 <code>
-python [extract_intron_gff3_from_gff3.py](https://raw.github.com/irusri/Extract-intron-from-gff3/master/scripts/extract_intron_gff3_from_gff3.py) [input.gff3]
+python [extract_intron_gff3_from_gff3.py](https://raw.github.com/irusri/Extract-intron-from-gff3/master/scripts/extract_intron_gff3_from_gff3.py) [input.gff3] [output.gff3]
 </code>
 
 Finally we need to filter and sort the output gff3 file  
