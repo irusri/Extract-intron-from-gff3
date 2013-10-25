@@ -1,4 +1,4 @@
-###Extract-intron-from-gff3
+###Extract intron feature gff3 from gene gff3 file
 ========================
 There several ways to extract intron gff3 file using gene gff3 file. We can use GBrowse databases to dump intron feature gff3 file. But we need load gff3 file into MySQL first.
 ######Option 1:
