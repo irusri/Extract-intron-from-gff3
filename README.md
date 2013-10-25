@@ -1,4 +1,17 @@
-Extract-intron-from-gff3
+##Extract-intron-from-gff3
 ========================
 
-This script will extract the ntron feature from gff3 file and store as a gff3
+There several ways to extract intron gff3 file using gene gff3 file. We can use GBrowse databases to dump intron feature gff3 file. But we need load gff3 file into MySQL first.
+Here are the steps:
+Load the gff3 file into GBrowse
+<code>
+perl bp_bulk_load.pl -u [uname]-p [pass] -d  [gbrowse_database] [input.gff3/input.fasta]
+</code>
+Extract the gff3:
+<code>
+perl make_intron_feature.pl -u [uname]-p [pass] -db [gbrowse_database] -o [output.gff3]
+</code>
+
+However we can extract intron feature gff3 file without using MySQL database:
+
+
