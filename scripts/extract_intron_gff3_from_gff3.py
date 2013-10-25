@@ -1,102 +1,76 @@
-#!/usr/bin/perl -w
-use strict;
-use Bio::DB::SeqFeature::Store;
-use Getopt::Long;
-use Env qw(HOME);
-my ($user,$pass,$dbname,$host);
-$host ='localhost';
-my $prefix;
-my $debug = 0;
-my $src = 'gene:Ptrichocarpav2_0';
-my $output;
+import time
+import os
+import misopy
+import misopy.gff_utils as gff_utils
+import misopy.Gene as gene_utils
 
-GetOptions(
-'v|verbose!' => \$debug,
-'u|user:s' => \$user,
-'p|pass:s' => \$pass,
-'host:s' => \$host,
-'db|dbname:s' => \$dbname,
+def instert_introns_to_gff3(gff_filename, output_dir):
+    """
+    Add 'intron' entries to GFF.
+    """
+    output_basename = "processed"
+    output_filename = \
+        os.path.join(output_dir,
+                     "%s.with_introns.gff" %(output_basename))
+    print "Adding introns to GFF..."
+    print "  - Input: %s" %(gff_filename)
+    print "  - Output: %s" %(output_filename)
+    gff_out = gff_utils.Writer(open(output_filename, "w"))
+    gff_db = gff_utils.GFFDatabase(from_filename=gff_filename,
+                                   reverse_recs=True)
+    t1 = time.time()
+    genes = gene_utils.load_genes_from_gff(gff_filename)
+    for gene_id in genes:
+        gene_info = genes[gene_id]
+        gene_tree = gene_info["hierarchy"]
+        gene_obj = gene_info["gene_object"]
+        gene_rec = gene_tree[gene_id]["gene"]
+        # Write the GFF record
+        gff_out.write(gene_rec)
+        # Write out the mRNAs, their exons, and then
+        # input the introns
+        for mRNA_id in gene_tree[gene_id]["mRNAs"]:
+            curr_mRNA = gene_tree[gene_id]["mRNAs"][mRNA_id]
+            gff_out.write(curr_mRNA["record"])
+            # Write out the exons
+            curr_exons = gene_tree[gene_id]["mRNAs"][mRNA_id]["exons"]
+            for exon in curr_exons:
+                gff_out.write(curr_exons[exon]["record"])
+        # Now output the introns
+        for isoform in gene_obj.isoforms:
+            intron_coords = []
+            for first_exon, second_exon in zip(isoform.parts,
+                                               isoform.parts[1::1]):
+                # Intron start coordinate is the coordinate right after
+                # the end of the first exon, intron end coordinate is the
+                # coordinate just before the beginning of the second exon
+                intron_start = first_exon.end + 1
+                intron_end = second_exon.start - 1
+                if intron_start >= intron_end:
+                    continue
+                intron_coords.append((intron_start, intron_end))
+                # Create record for this intron
+                intron_id = "%s:%d-%d:%s" %(gene_obj.chrom,
+                                            intron_start,
+                                            intron_end,
+                                            gene_obj.strand)
+                intron_rec = \
+                    gff_utils.GFF(gene_obj.chrom, gene_rec.source, "intron",
+                                  intron_start, intron_end,
+                                  attributes={"ID": [gene_obj.label],
+                                              "Parent": [isoform.label]})
+                gff_out.write(intron_rec)
+    t2 = time.time()
+    print "Addition took %.2f minutes." %((t2 - t1)/60.)
 
-'s|src:s' => \$src,
-'o|output:s' => \$output,
-);
+if __name__=="__main__":
+        import sys
+        if len(sys.argv) > 1:
+                file = sys.argv[1]
+                store = sys.argv[2]
+                instert_introns_to_gff3(file, store)
+        else:
+                sys.exit("No input")
 
-unless( defined $dbname ) {
-    die("no dbname provided\n");
-}
 
-($user,$pass) = &read_cnf($user,$pass) unless $pass && $user;
-my $dsn = sprintf('dbi:mysql:database=%s;host=%s',$dbname,$host);
-my $dbh = Bio::DB::SeqFeature::Store->new(-adaptor => 'DBI::mysql',
-                                          -dsn => $dsn ,
-                                          -user => $user,
-                                          -password => $pass,
-                                          );
-my $ofh;
-if( $output && $output ne '-' ) {
-    open($ofh => ">$output" ) || die $!;
-} else {
-    $ofh = \*STDOUT;
-}
-
-print $ofh "##gff-version 3\n";
-my $iter = $dbh->get_seq_stream(-type => $src);
-my (undef,$from1) = split(/:/,$src);
-my $count = 0;
-my $gene_count = 0;
-
-while( my $gene = $iter->next_seq ) {
-    $gene_count++;
-    my $gene_name = $gene->name;
-    my @mRNA = $gene->get_SeqFeatures('mRNA');
-    if( ! @mRNA ) {
-	warn("no mRNA for $gene_name\n");
-    }
-    for my $mRNA ( @mRNA ) {	# 1st mRNA for now
-	my $last_exon;
-	my $i = 1;
-	my $mRNA_name = $mRNA->name || 'mRNA-'.$mRNA->load_id;
-	for my $exon ( sort { $a->start * $a->strand <=> $b->start * $b->strand }
-		       $mRNA->get_SeqFeatures('exon') ) {
-	    if( $last_exon ) {
-		my ($start,$end) = ( $last_exon->end+1,$exon->start - 1);
-		if( $exon->strand < 0 ) {
-		    ($start,$end) = ( $exon->end + 1, $last_exon->start-1);
-		}
-
-		print $ofh join("\t",
-				$gene->seq_id,
-				$gene->source,
-				'intron',
-				$start,$end, '.',
-				$exon->strand > 0 ? '+' : '-',
-				'.',
-				sprintf('ID=%s.i%d;Gene=%s',
-					$mRNA_name,
-					$i++,
-					$gene_name)),"\n";
-	    }
-	    $last_exon = $exon;
-	}
-	last;
-    }
-    last if $debug && $count++ > 10;
-}
-
-warn("gene count $gene_count\n");
-sub read_cnf {
-    my ($user,$pass) = @_;
-    if( -f "$HOME/.my.cnf") {
-        open(IN,"$HOME/.my.cnf");
-        while(<IN>) {
-            if(/user(name)?\s*=\s*(\S+)/ ) {
-                $user = $2;
-            } elsif( /pass(word)\s*=\s*(\S+)/ ) {
-                $pass = $2;
-            }
-        }
-        close(IN);
-    }
-    return ($user,$pass);
-}
 
