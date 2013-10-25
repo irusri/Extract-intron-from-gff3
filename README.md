@@ -9,10 +9,13 @@ perl [bp_bulk_load.pl](https://github.com/bioperl/bioperl-live/blob/master/scrip
 Extract the gff3:  
 <code>
 perl [make_intron_feature.pl](http://popgenie.org/script/make_intron_feature.pl) -u [uname]-p [pass] -db [gbrowse_database] -o [output.gff3]
-</code>
+</code>  
 [Here](http://galaxy.popgenie.org:8080/u/chanaka/h/extract-intron) is the final results.
 ######Option 2:
 Here is the alternative solution without using GBrowse and MySQL.
 First we need to download and install the latest version of [misopy](https://pypi.python.org/pypi/misopy) and [gffutils](https://github.com/seandavi/GFFutils).
+<code>
+python [extract_intron_gff3_from_gff3.py](https://raw.github.com/irusri/Extract-intron-from-gff3/master/scripts/extract_intron_gff3_from_gff3.py) [input.gff3]
+</code>
 
 
