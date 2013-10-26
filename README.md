@@ -26,8 +26,8 @@ awk '/intron/{print}' output.gff3 | sort -k 1,1 -k4,2n   > processed_intron.gff3
 </pre>
 
 ######Option 3:
-If you don't like to type commands, you can use the [PlantGeIE Galaxy extract intron feature tool](http://galaxy.popgenie.org:8080/tool_runner?tool_id=extract_intron_gff3). Final results similar to [this](http://galaxy.popgenie.org:8080/u/chanaka/h/extract-intron-gff3).
-Before:
+If you don't like to type commands, you can use the [PlantGeIE Galaxy extract intron feature tool](http://galaxy.popgenie.org:8080/tool_runner?tool_id=extract_intron_gff3). Final results similar to [this](http://galaxy.popgenie.org:8080/u/chanaka/h/extract-intron-gff3).  
+Before:  
 <pre>
 Chr01	phytozome8_0	gene	2906	6646	.	-	.	ID=Potri.001G000200;Name=Potri.001G000200  
 Chr01	phytozome8_0	mRNA	2906	6646	.	-	.	ID=PAC:27045395;Name=Potri.001G000200.1;pacid=27045395;longest=1;Parent=Potri.001G000200  
