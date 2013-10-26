@@ -44,3 +44,5 @@ Chr01	phytozome8_0	intron	3476	3505	.	.	.	ID=Potri.001G000200;Parent=PAC:2704539
 Chr01	phytozome8_0	intron	3929	6500	.	.	.	ID=Potri.001G000200;Parent=PAC:27045395  
 </pre> 
 Final results similar to [this](http://galaxy.popgenie.org:8080/u/chanaka/h/extract-intron-gff3)
+
+###Extract intron feature fasta from gene_intron gff3 and fasta file
