@@ -6,7 +6,7 @@ import misopy.gff_utils as gff_utils
 import misopy.Gene as gene_utils
 
 def instert_introns_to_gff3(gff_filename, output_gff3_filename):
-    output_filename = os.path.join(output_dir,"%s._introns.gff3" %(output_gff3_filename))
+    output_filename = os.path.join(output_gff3_filename,"%s._introns.gff3" %(output_gff3_filename))
     print "Adding introns to GFF..."
     print "  - Input: %s" %(gff_filename)
     print "  - Output: %s" %(output_filename)
