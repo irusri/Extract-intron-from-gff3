@@ -47,5 +47,5 @@ Final results similar to [this](http://galaxy.popgenie.org:8080/u/chanaka/h/extr
 
 ###Extract intron feature fasta from gene_intron gff3 and genome fasta file
 <code>
-perl [exttract_seq_from_gff3.pl]() -d genome.fa - gene_intron.gff3 > output_intron.fa
+perl [exttract_seq_from_gff3.pl](https://github.com/irusri/Extract-intron-from-gff3/blob/master/scripts/extract_seq_from_gff3.pl) -d genome.fa - gene_intron.gff3 > output_intron.fa
 </code>
