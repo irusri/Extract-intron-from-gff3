@@ -3,22 +3,22 @@
 There are several ways to extract intron feature gff3 from gene_exon gff3 file. We can use GBrowse databases to dump intron based gff3 file as a first option.
 ######Option 1:
 Load the gff3 file into MySQL:   
-<pre>
+<code>
 perl [bp_bulk_load.pl](https://github.com/bioperl/bioperl-live/blob/master/scripts/Bio-DB-GFF/bp_bulk_load_gff.pl) -u [uname]-p [pass] -d  [gbrowse_database] [input.gff3/input.fasta]  
-</pre>
+</code>
 Extract intron feature gff3:  
-<pre>
+<code>
 perl [make_intron_feature.pl](http://v22.popgenie.org/script/make_intron_feature.pl) -u [uname]-p [pass] -db [gbrowse_database] -o [output.gff3]
-</pre>
+</code>
 
 [Here](http://galaxy.popgenie.org:8080/u/chanaka/h/extract-intron) are the final results.
 
 ######Option 2:
 This is an alternative solution without using GBrowse and MySQL.
 First we need to download and install the latest version of [misopy](https://pypi.python.org/pypi/misopy) and [gffutils](https://github.com/seandavi/GFFutils).  
-<pre>
+<code>
 python [extract_intron_gff3_from_gff3.py](https://raw.github.com/irusri/Extract-intron-from-gff3/master/scripts/extract_intron_gff3_from_gff3.py) [input.gff3] [output.gff3]
-</pre>
+</code>
 
 Finally we need to filter and sort the output gff3 file  
 <pre>
