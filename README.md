@@ -30,13 +30,13 @@ If you don't like to type commands, you can use the [PlantGeIE Galaxy extract in
 Before:  
 <pre>
 Chr01	phytozome8_0	gene	2906	6646	.	-	.	ID=Potri.001G000200;Name=Potri.001G000200  
-Chr01	phytozome8_0	mRNA	2906	6646	.	-	.	ID=PAC:27045395;Name=Potri.001G000200.1;Parent=Potri.001G000200  
+Chr01	phytozome8_0	mRNA	2906	6646	.	-	.	ID=PAC:27045395;Name=Potri.001G000200.1;  
 Chr01	phytozome8_0	exon	6501	6646	.	-	.	ID=PAC:27045395.exon.1;Parent=PAC:27045395;pacid=27045395  
 Chr01	phytozome8_0	CDS	6501	6644	.	-	0	ID=PAC:27045395.CDS.1;Parent=PAC:27045395;pacid=27045395  
-Chr01	phytozome8_0	five_prime_UTR	6645	6646	.	-	.	ID=PAC:27045395.five_prime_UTR.1;Parent=PAC:27045395: 
-Chr01	phytozome8_0	exon	3506	3928	.	-	.	ID=PAC:27045395.exon.2;Parent=PAC:27045395;pacid=27045395  
-Chr01	phytozome8_0	CDS	3506	3928	.	-	0	ID=PAC:27045395.CDS.2;Parent=PAC:27045395;pacid=27045395  
-Chr01	phytozome8_0	exon	2906	3475	.	-	.	ID=PAC:27045395.exon.3;Parent=PAC:27045395;pacid=27045395 
+Chr01	phytozome8_0	five_prime_UTR	6645	6646	.	-	.	ID=PAC:27045395.five_prime_UTR.1; 
+Chr01	phytozome8_0	exon	3506	3928	.	-	.	ID=PAC:27045395.exon.2;Parent=PAC:27045395;  
+Chr01	phytozome8_0	CDS	3506	3928	.	-	0	ID=PAC:27045395.CDS.2;Parent=PAC:27045395;    
+Chr01	phytozome8_0	exon	2906	3475	.	-	.	ID=PAC:27045395.exon.3;Parent=PAC:27045395;  
 </pre>  
 After:  
 <pre>
