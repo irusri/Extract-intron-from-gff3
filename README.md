@@ -45,7 +45,8 @@ Chr01	phytozome8_0	intron	3929	6500	.	.	.	ID=Potri.001G000200;Parent=PAC:2704539
 </pre> 
 Final results similar to [this](http://galaxy.popgenie.org:8080/u/chanaka/h/extract-intron-gff3)
 
-###Extract intron feature sequence file from gene_intron gff3 and fasta file
+###Extract intron feature sequence file from gene_intron gff3 and fasta file  
+Here we use the output from above steps(gene_intron.gff3).
 <code>
 perl [exttract_seq_from_gff3.pl](https://github.com/irusri/Extract-intron-from-gff3/blob/master/scripts/extract_seq_from_gff3.pl) -d genome.fa - gene_intron.gff3 > output_intron.fa
 </code>    
