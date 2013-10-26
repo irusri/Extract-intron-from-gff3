@@ -1,23 +1,17 @@
+# Insert 'intron' entries to GFF.
 import time
 import os
 import misopy
 import misopy.gff_utils as gff_utils
 import misopy.Gene as gene_utils
 
-def instert_introns_to_gff3(gff_filename, output_filename):
-    """
-    Add 'intron' entries to GFF.
-    """
-    output_basename = output_filename
-    output_filename = \
-        os.path.join(output_dir,
-                     "%s._introns.gff3" %(output_basename))
+def instert_introns_to_gff3(gff_filename, output_gff3_filename):
+    output_filename = os.path.join(output_dir,"%s._introns.gff3" %(output_gff3_filename))
     print "Adding introns to GFF..."
     print "  - Input: %s" %(gff_filename)
     print "  - Output: %s" %(output_filename)
     gff_out = gff_utils.Writer(open(output_filename, "w"))
-    gff_db = gff_utils.GFFDatabase(from_filename=gff_filename,
-                                   reverse_recs=True)
+    gff_db = gff_utils.GFFDatabase(from_filename=gff_filename, reverse_recs=True)
     t1 = time.time()
     genes = gene_utils.load_genes_from_gff(gff_filename)
     for gene_id in genes:
