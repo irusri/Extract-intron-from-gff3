@@ -30,7 +30,7 @@ nosetests.xml
 # Translations
 *.mo
 
-# Mr Developer
+# Chanaka Mannapperuma
 .mr.developer.cfg
 .project
 .pydevproject
