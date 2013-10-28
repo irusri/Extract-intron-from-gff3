@@ -50,7 +50,7 @@ def instert_introns_to_gff3(gff_filename, output_gff3_filename):
                                             gene_obj.strand)
                 intron_rec = \
                     gff_utils.GFF(gene_obj.chrom, gene_rec.source, "intron",
-                                  intron_start, intron_end,",",gene_obj.strand,
+                                  intron_start, intron_end,".",gene_obj.strand,
                                   attributes={"ID": [gene_obj.label],
                                               "Parent": [isoform.label]})
                 gff_out.write(intron_rec)
