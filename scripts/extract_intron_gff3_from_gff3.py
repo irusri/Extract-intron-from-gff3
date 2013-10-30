@@ -19,6 +19,8 @@ def instert_introns_to_gff3(gff_filename, output_gff3_filename):
         gene_tree = gene_info["hierarchy"]
         gene_obj = gene_info["gene_object"]
         gene_rec = gene_tree[gene_id]["gene"]
+        gene_start = int(str(gene_tree[gene_id]['gene']).split(",")[3].strip(" "))
+        gene_end = int(str(gene_tree[gene_id]['gene']).split(",")[4].strip(" "))
         # Write the GFF record
         gff_out.write(gene_rec)
         # Write out the mRNAs, their exons, and then
