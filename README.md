@@ -28,7 +28,7 @@ awk '/intron/{print}' output.gff3 | sort -k 1,1 -k4,2n   > processed_intron.gff3
 </pre>
 
 ## Option 3:
-If you don't like to type commands, you can use the [PlantGenIE Galaxy extract intron feature tool](http://galaxy.popgenie.org:8080/tool_runner?tool_id=extract_intron_gff3).  
+If you don't like to type commands, you can use [PlantGenIE Galaxy extract intron feature tool](http://galaxy.popgenie.org:8080/tool_runner?tool_id=extract_intron_gff3).  
 Before:  
 <pre>
 Chr01	phytozome8_0	gene	2906	6646	.	-	.	ID=Potri.001G000200;Name=Potri.001G000200  
@@ -53,4 +53,4 @@ Here we use the output from above steps(processed_intron/output.gff3).
 perl [exttract_seq_from_gff3.pl](https://github.com/irusri/Extract-intron-from-gff3/blob/master/scripts/extract_seq_from_gff3.pl) -d genome.fa - gene_intron.gff3 > output_intron.fa
 </code>    
 
-Test results [here](http://galaxy.popgenie.org:8080/u/chanaka/h/extract-intron).  
+Test results are available [here](http://galaxy.popgenie.org:8080/u/chanaka/h/extract-intron).  
