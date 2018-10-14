@@ -49,8 +49,9 @@ Final results similar to [this](http://galaxy.popgenie.org:8080/u/chanaka/h/extr
 
 ## Extract intron feature sequence file from gene_intron gff3 and fasta file  
 Here we use the output from above steps(processed_intron/output.gff3).
-<code>
+
+
 perl [exttract_seq_from_gff3.pl](https://github.com/irusri/Extract-intron-from-gff3/blob/master/scripts/extract_seq_from_gff3.pl) -d genome.fa - gene_intron.gff3 > output_intron.fa
-</code>    
+  
 
 Test results are available [here](http://galaxy.popgenie.org:8080/u/chanaka/h/extract-intron).  
