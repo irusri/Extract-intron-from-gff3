@@ -22,7 +22,7 @@ First we need to download and install the latest version of [misopy](https://pyp
 python [extract_intron_gff3_from_gff3.py](https://raw.github.com/irusri/Extract-intron-from-gff3/master/scripts/extract_intron_gff3_from_gff3.py) [input.gff3] [output.gff3]
 
 
-Finally we need to filter and sort the output gff3 file  
+Finally filter and sort the output gff3 file  
 <pre>
 awk '/intron/{print}' output.gff3 | sort -k 1,1 -k4,2n   > processed_intron.gff3
 </pre>
